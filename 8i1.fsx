@@ -5,6 +5,16 @@ type figure =
   | Rectangle of point * point * colour // Defined by corners bottom-left, top-right and colour
   | Mix of figure * figure // Combine figures with mixed colours at overlap
 
+ /// <param name "(x,y)" "figure">
+ /// (x,y) is the point on the BitMap that is being checked
+ /// figure is one of the three types of figure
+ /// </param name>
+ /// <summary>
+ /// The function matches the Figure, on one of the three types. And afterwards, prints, if there in a given spot (x,y) finds the figure
+ /// </summary>
+ /// <returns>
+ /// The figure returns a Colour Option
+ /// </returns>
 let rec colourAt (x,y) figure =
   match figure with
   | Circle ((cx,cy), r, col) ->
