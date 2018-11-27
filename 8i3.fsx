@@ -6,16 +6,15 @@ type figure =
   | Rectangle of point * point * colour // Defined by corners bottom-left, top-right and colour
   | Mix of figure * figure // Combine figures with mixed colours at overlap
 
-///let CheckColour (c:colour) : bool =
-let a = (1,2,4)
-let b =  third a
-printfn "%A" b
+let CheckColour (r, g, b) : bool =
+  r>=0 && r<=255 && g>=0 && g<=255 && b>=0 && b<=255
+
 let rec CheckFigure (f:figure): bool =
   match f with
   | Circle ((cx,cy),r,col) ->
-      r > 0
+      r > 0 && CheckColour col
   | Rectangle ((x0,y0), (x1,y1), col) ->
-      x0 > x1 && y0 > y1
+      x0 > x1 && y0 > y1 && CheckColour col
   | Mix (f1,f2) ->
       CheckFigure(f1) && CheckFigure(f2)
 
