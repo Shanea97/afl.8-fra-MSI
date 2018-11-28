@@ -1,5 +1,14 @@
 open ImgUtil
-
+/// <param name "fig">
+/// Fig takes the form of figure
+/// </param name>
+/// <summary>
+/// the function matches fig with one of the three figures, and corrosponds to that
+/// by doing one of three things, and thereby checking for the smallest box, that covers the figure
+/// </summary>
+/// <returns>
+/// A tupple of Points
+/// </returns>
 let rec boundingBox (fig:figure) : point*point =
   match fig with
   | Circle ((cx,cy), r, col) ->
